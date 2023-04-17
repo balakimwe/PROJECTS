@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <p>{{message}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="nav">
+        <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist"
+            style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab"
+                    aria-selected="true">Home</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab"
+                    aria-selected="false">Products</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab"
+                    aria-selected="false">Shopping Cart</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab"
+                    aria-selected="false">contact</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab"
+                    aria-selected="false">login/register</button>
+            </li>
+        </ul>
+    </div>
+
+    <section class="section-products">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="header">
+                        <h3>Featured Product</h3>
+                        <h2>Popular Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <img src="cooking_oil.jpg" alt="cooking_oil">
+                            <h3 class="product-title"><img src="cooking_oil.jpg" alt="cooking_oil">Cooking Oil</h3>
+                            <h4 class="product-old-price">$4.99</h4>
+                            <h4 class="product-price">$3.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-2" class="single-product">
+                        <div class="part-1">
+                            <span class="discount">15% off</span>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">hot Dogs</h3>
+                            <h4 class="product-price">$2.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-3" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">eggs</h3>
+                            <h4 class="product-old-price">$3.99</h4>
+                            <h4 class="product-price">$2.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-4" class="single-product">
+                        <div class="part-1">
+                            <span class="new">new</span>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Banana</h3>
+                            <h4 class="product-price">$4.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Letus</h3>
+                            <h4 class="product-old-price">$2.99</h4>
+                            <h4 class="product-price">$1.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-2" class="single-product">
+                        <div class="part-1">
+                            <span class="discount">15% off</span>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Milk</h3>
+                            <h4 class="product-price">$3.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-3" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">chicken Breast</h3>
+                            <h4 class="product-old-price">$4.99</h4>
+                            <h4 class="product-price">$3.99</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-4" class="single-product">
+                        <div class="part-1">
+                            <span class="new">new</span>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Tilapia</h3>
+                            <h4 class="product-price">$4.99</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

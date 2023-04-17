@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+<div class="container my-5">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                   <b>Invoice:</b>  {{customer_order.invoice}}
+                    <br>
+                    <b>Payment Status:</b> {{customer_order.payment_status}}
+                    <br>
+                    <b>Customer name:</b> {{customer.name}}
+                    <br>
+                    <b>Customer email:</b> {{customer.email}}
+                    <br>
+                    <b>Customer contact:</b> {{customer.contact}}
+                    <br>
+                    <br>
+                </div>
+                <div class="col">
+                    
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Sr</th>
+                            <th>Name</th>
+                           
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                            
+                            <th>Subtotal</th>
+                        </thead>
+                        <tbody>
+                            {% for order in customer_order.orders %}
+                            {% set discount =(order.discount/100) * order.product_price|float %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{order.product.name}}</td>
+                                <form action="{{url_for('cart_bp.updatecart', code=order.product.id)}}" method="post">
+                    
+                                <td>${{"%.2f"|format(order.product_price)}}</td>
+                                <td> {{order.quantity}} </td>
+                                {% if order.discount  %}
+                                <td>{{order.discount}} % &nbsp; &nbsp; is {{"%.2f"|format(discount)}}</td>
+                                {% else %}
+                                <td></td>
+                                {% endif %}
+                                
+                                {% set subtotal = order.quantity|int * order.product_price|float  %}
+                                <td>${{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                            </form>        
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-5">
+                </div>
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                        <tbody>
+                            
+                            
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Tax</strong>
+                                </td>
+                                <td class="right">${{tax}}</td>
+                            </tr>
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Grand total</strong> </td>
+                                <td class="right">
+                                    <strong class="text-dark">${{grandTotal}}</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}

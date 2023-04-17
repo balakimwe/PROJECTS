@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% include 'includes/admin-navbar.html' %}
+<!--==========END NAVBAR ==============-->
+
+<div class="container my-5">
+    {% include '_messages.html' %}
+    <table class="table tbale-sm">
+        <thead>
+            <th>Sr</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Point</th>
+            <th>Stock</th>
+            <th>Discount</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td> <img src="{{url_for('static',filename='images/' + product.image_1)}}" alt="{{product.name}}" width="50" height="20"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.point }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.discount }}</td>
+            <td> <a href="{{url_for('products_bp.update_product', product_id=product.id)}}" class="btn btn-sm btn-info">Edit </a> </td>
+            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{product.id}}">
+              Delete
+            </button></td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

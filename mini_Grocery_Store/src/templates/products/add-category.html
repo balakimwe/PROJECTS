@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+    {% include 'includes/admin-navbar.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 my-5 mx-auto">
+            <div class="card  my-5" >
+                <div class="card-body">
+                    <h5 class="card-title text-center">{% if updatecat %} Update {% else %}Add a {% endif %}category</h5>
+                    {% include '_messages.html' %}
+                    <div>
+                        <form action="" method="post">
+                            {% if updatecat %}
+                            <input type="text" name="category" class="form-control" value="{{updatecat.name}}">
+                            <input type="submit" value="Update category" class="btn btn-info mt-3">
+                            {% else %}
+                            <input type="text" name="category" class="form-control">
+                            <input type="submit" value="Add a category" class="btn btn-info mt-3">
+                            {% endif %}
+                            
+                        </form>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

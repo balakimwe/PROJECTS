@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% include 'includes/admin-navbar.html' %}
+
+<!--==========END NAVBAR ==============-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 my-5 mx-auto">
+            <div class="card  my-1" >
+                <div class="card-body">
+                  <h5 class="card-title text-center">Add A Product</h5>
+                    {% include '_messages.html' %}
+                  <div>
+                    {% from "_formhelpers.html" import render_field %}
+                <form method="post" enctype="multipart/form-data">
+                <div>
+                    {{ render_field(form.name, class="form-control") }}
+                    {{ render_field(form.price, class="form-control") }}
+                   
+                    {{ render_field(form.discount, class="form-control") }}
+                    {{ render_field(form.stock, class="form-control") }}
+
+                    <label for="category">Add a category</label>
+                    <select name="category" id="category" class="form-control" required>
+                    {% if getproduct %}
+                      <option value="{{getproduct.category_id}}" style="display: none;">{{getproduct.category.name}}</option>
+                      {% for category in categories %}
+                      <option value="{{category.id}}">{{category.name}}</option>
+                      {% endfor %}
+                     {% else %}
+                     <option value=""> Select A category</option>
+                     {% for category in categories %}
+                     <option value="{{category.id}}">{{category.name}}</option>
+                     {% endfor %}
+                     {% endif %}
+                    </select>
+
+                    
+                    {{ render_field(form.description, class="form-control", rows="10") }}
+                </div>
+                <div class="container">
+                    <div class="row">
+                        {% if getproduct %}
+                        <div class="col-md-4"> <input type="file" name="image_1" id="image_1">
+                            <a href="{{url_for('static',filename='images/' + getproduct.image_1)}}"> images/{{ getproduct.image_1}}</a>
+                        </div>
+                        <div class="col-md-4"><input type="file" name="image_2" id="image_2"> 
+                            <a href="{{url_for('static',filename='images/' + getproduct.image_2)}}">images/{{ getproduct.image_2}}</a>
+                        </div>
+                        
+                        <div class="col-md-4"><input type="file" name="image_3" id="image_3"> 
+                            <a href="{{url_for('static',filename='images/' + getproduct.image_3)}}"> image/{{ getproduct.image_3}}</a>
+                        </div>
+                      
+                        {% else %}
+                        <div class="col-md-4">{{ render_field(form.image_1) }}</div>
+                        <div class="col-md-4">{{ render_field(form.image_2) }}</div>
+                        <div class="col-md-4">{{ render_field(form.image_3) }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+
+                    <input type="submit" value="{% if getproduct %}Update {% else %}Add{% endif %} product" class="btn btn-info">
+                </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

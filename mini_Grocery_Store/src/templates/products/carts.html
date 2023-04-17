@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+<div class="container my-5">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col my-5">
+            <div class="row">
+                <div class="col">
+                    <div class="text-right">
+
+                        <a href="{{url_for('cart_bp.clearcart')}}" class="btn btn-danger btn-sm"> Clear cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Sr</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                            <th>Subtotal</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </thead>
+                        <tbody>
+                            {% for key, product in session['Shoppingcart'].items() %}
+                            {% set discount =(product.discount/100) * product.price|float %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td><img src="{{url_for('static',filename='images/'+ product.image)}}" alt="{{product.name}}" width="50" height="45"></td>
+                                <td>{{product.name}}</td>
+                                <form action="{{url_for('cart_bp.updatecart', code=key)}}" method="post">
+                                
+                                <td>${{"%.2f"|format(product.price)}}</td>
+            
+                                <td> <input type="number" name="quantity" min="1" max="10" value="{{product.quantity}}"> </td>
+                                {% if product.discount  %}
+                                <td>{{product.discount}} % &nbsp; &nbsp; is {{"%.2f"|format(discount)}}</td>
+                                {% else %}
+                                <td></td>
+                                {% endif %}
+                                {% set subtotal = product.quantity|int * product.price|float  %}
+                                <td>${{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                            
+                                <td><button type="submit" class="btn btn-sm btn-info">Update</button> </td>
+                            </form>
+                                <td> <a href="{{url_for('cart_bp.deleteitem', id=key)}}" class="btn btn-sm btn-danger">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-5">
+                    <a href="{{url_for('customer_bp.get_order')}}" class="btn btn-success"> Order now </a>
+                </div>
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                        <tbody>
+                            
+                            
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Tax</strong>
+                                </td>
+                                <td class="right">${{tax}}</td>
+                            </tr>
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Grand total</strong> </td>
+                                <td class="right">
+                                    <strong class="text-dark">${{grandtotal}}</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+    </div>
+  </div>
+</div>
+{% endblock content %}

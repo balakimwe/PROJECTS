@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show</title>
+  </head>
+  <body>
+    <a href="/products">Dashbooard</a><br />
+    <a href="/logout">logout</a><br />
+    <a href="/products/new">Add product</a>
+
+    <h1>Welcome {{session.first_name}}</h1>
+    <h3>Product Name: {{product.name}}</h3>
+    <h3>Order by: {{customer.first_name}}</h3>
+    <h3>Quantity: {{product.quantity}}</h3>
+    <h3>Price: {{product.price}}</h3>
+  </body>
+</html>
