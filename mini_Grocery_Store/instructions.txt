@@ -1,0 +1,6 @@
+
+type this two command in commad prompt not powershell
+
+.\venv\Scripts\activate
+
+python app.py
